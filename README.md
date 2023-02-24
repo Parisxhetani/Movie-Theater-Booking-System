@@ -48,7 +48,9 @@ To set up the project, follow these steps:
 4- Build and run the project.
 
 (The Database is initialized in the connection string of each DAO file.)
+
 (As for the user login you can use [kristi:1234] or [parez:0000].)
+
 ## Contributors
 This project was created by Paris Xhetani and Kristi Lamaj.
 ## License
