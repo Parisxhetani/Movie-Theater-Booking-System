@@ -1,0 +1,22 @@
+.my-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.my-table th, .my-table td {
+    text-align: left;
+    padding: 8px;
+}
+
+.my-table th {
+    background-color: #ddd;
+    font-weight: bold;
+}
+
+.my-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.my-table tr:hover {
+    background-color: #ddd;
+}

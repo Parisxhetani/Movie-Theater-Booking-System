@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet name="styles.css"/>
+</h:head>
+<f:view>
+    <h:form>
+        <h:panelGroup layout="block" styleClass="header">
+            <h:outputText value="My Website" styleClass="logo"/>
+
+            <h:panelGroup layout="block" styleClass="buttons">
+                <h:commandButton value="Login" action="#{redirect_play_bean.toLogin}" styleClass="login-button"/>
+                <h:commandButton value="Sign Up" action="#{redirect_play_bean.go_to_login}" styleClass="signup-button"/>
+            </h:panelGroup>
+        </h:panelGroup>
+    </h:form>
+    <h:form>
+        <h:inputText value="#{play_bean.searchTerm}" placeholder="Search..."/>
+        <h:commandButton value="Go" action="#{play_bean.filterData}"/>
+    </h:form>
+
+    <h:form>
+        <h:dataTable value="#{play_bean.plays}" var="play_model" id="playsTable" styleClass="my-table">
+
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{play_model.id}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Title</f:facet>
+                <h:outputText value="#{play_model.title}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Writer</f:facet>
+                <h:outputText value="#{play_model.writer}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Director</f:facet>
+                <h:outputText value="#{play_model.director}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Actors</f:facet>
+                <h:outputText value="#{play_model.actors}"/>
+            </h:column>
+
+            <h:column>
+                <h:commandButton value="View Show" action="#{redirect_play_bean.getPlayId}">
+                    <f:param name="id" value="#{play_model.id}"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</f:view>
+
+</html>

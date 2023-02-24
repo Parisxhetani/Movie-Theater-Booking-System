@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <h:outputStylesheet name="styles.css" />
+</h:head>
+<f:view>
+    <!--<h:outputLabel value="ID: #{param.id}"/>-->
+
+    <h:panelGroup layout="block" styleClass="header">
+        <h:outputText value="My Website" styleClass="logo"/>
+
+        <h:panelGroup layout="block" styleClass="buttons">
+            <h:commandButton value="Login" action="#{loginBean.login}" styleClass="my-button"/>
+            <h:commandButton value="Sign Up" action="#{signupBean.signup}" styleClass="my-button"/>
+        </h:panelGroup>
+    </h:panelGroup>
+
+    <h:form>
+        <h:inputText value="#{show_bean.searchTerm}" placeholder="Search..."/>
+        <h:commandButton value="Go" action="#{show_bean.filterData}"/>
+    </h:form>
+
+    <h:form>
+        <h:dataTable value="#{show_bean.get_show_by_id(param.id)}" var="show_model" id="showsTable" styleClass="my-table">
+
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                <h:outputText value="#{show_model.id}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Play Title</f:facet>
+                <h:outputText value="#{show_model.playTitle}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Hall Name</f:facet>
+                <h:outputText value="#{show_model.hallName}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Date</f:facet>
+                <h:outputText value="#{show_model.showDate}"/>
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Time</f:facet>
+                <h:outputText value="#{show_model.showTime}"/>
+            </h:column>
+
+            <h:column>
+                <h:commandButton value="View Reservation" action="#{redirect_play_bean.getPlayId}">
+                    <f:param name="id" value="#{show_model.id}"/>
+                </h:commandButton>
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+</f:view>
+</html>
